@@ -16,7 +16,7 @@ private:
 
     int fileSize;
 
-    char * fileContents;
+    unique_ptr<char> fileContents;
 
     bool readPrepared;
 
@@ -26,17 +26,23 @@ public:
 
     void Init(string arg);
 
+    string GetFullPath();
+
+    bool FindFile();
+
     void ReadFile();
 
     int GetFileSize();
 
-    char * GetFileContents();
+    unique_ptr<char> GetFileContents();
 
     void SetFileSize(int arg);
 
-    void SetFileContents(char * arg);
+    void SetFileContents(unique_ptr<char> arg);
 
     void WriteFile();
+
+    void DeleteExistingFile();
 
     LesserFileEntity();
 
